@@ -5,6 +5,10 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 class MastercardPaymentMethod : APaymentMethod() {
+    companion object Factory : PaymentMethodFactory() {
+        override fun buildPaymentMethod() = MastercardPaymentMethod()
+    }
+
     override fun getName(): String {
         return "MASTERCARD"
     }

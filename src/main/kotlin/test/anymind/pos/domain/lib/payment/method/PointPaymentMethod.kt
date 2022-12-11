@@ -1,6 +1,10 @@
 package test.anymind.pos.domain.lib.payment.method
 
 class PointPaymentMethod: APaymentMethod() {
+    companion object Factory : PaymentMethodFactory() {
+        override fun buildPaymentMethod() = PointPaymentMethod()
+    }
+
     override fun getName(): String {
         return "POINTS"
     }

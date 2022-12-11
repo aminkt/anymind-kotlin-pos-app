@@ -1,6 +1,10 @@
 package test.anymind.pos.domain.lib.payment.method
 
 class CashPaymentMethod: APaymentMethod() {
+    companion object Factory : PaymentMethodFactory() {
+        override fun buildPaymentMethod() = CashPaymentMethod()
+    }
+
     override fun getName(): String {
         return "CASH"
     }

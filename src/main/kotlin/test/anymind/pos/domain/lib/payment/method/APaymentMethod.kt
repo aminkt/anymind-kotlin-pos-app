@@ -1,5 +1,7 @@
 package test.anymind.pos.domain.lib.payment.method
 
+import kotlin.math.roundToInt
+
 abstract class APaymentMethod {
     protected var additionalItems: String? = null
 
@@ -21,11 +23,18 @@ abstract class APaymentMethod {
     {
         check(priceModifier >= getMinPriceModifier()) { "priceModifier ($priceModifier) must be grater or equal than ${getMinPriceModifier()}!" }
         check(priceModifier <= getMaxPriceModifier()) { "priceModifier ($priceModifier) must be less or equal than ${getMaxPriceModifier()}!" }
-        return price * priceModifier
+        val finalPrice = price * priceModifier
+        return round(finalPrice)
     }
 
     fun calculateFinalPoints(price: Double): Double
     {
-        return price * getPointModifier()
+        val finalPoint = price * getPointModifier()
+        return round(finalPoint)
+    }
+
+    private fun round(num: Double): Double
+    {
+        return (num * 100.0).roundToInt() / 100.0
     }
 }

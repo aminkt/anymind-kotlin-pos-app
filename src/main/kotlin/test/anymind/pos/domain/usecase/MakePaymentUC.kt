@@ -5,11 +5,12 @@ import test.anymind.pos.domain.lib.payment.method.APaymentMethod
 import test.anymind.pos.domain.repository.ITransactionRepo
 import java.time.LocalDateTime
 
-
 class MakePaymentUC(
     private val transactionRepo: ITransactionRepo,
     private val price: Double,
     private val priceModifier: Float,
+    private val userId: Int,
+    private val customerId: Int,
     private val paymentMethod: APaymentMethod
 ) {
     fun execute(): MakePaymentResult {
@@ -20,18 +21,15 @@ class MakePaymentUC(
 
         val transactionEntity = TransactionEntity(
             null,
+            userId,
+            customerId,
             finalPrice,
             points,
             LocalDateTime.now(),
             paymentMethod.getAdditionalDataAsJsonString()
         )
-
-        println(transactionEntity.price)
-        println(transactionEntity.point)
         transactionRepo.saveAndFlush(transactionEntity)
-
-        println(LocalDateTime.now().second)
-        throw RuntimeException("Thread handling issue.")
+        return MakePaymentResult(finalPrice, points)
     }
 }
 
