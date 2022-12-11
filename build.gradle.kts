@@ -21,12 +21,15 @@ dependencies {
 	implementation("com.expediagroup", "graphql-kotlin-spring-server", "6.3.1")
 	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("com.h2database", "h2")
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	runtimeOnly("com.mysql:mysql-connector-j")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation ("org.junit.platform:junit-platform-suite-api:1.7.0")
+	testImplementation ("org.junit.platform:junit-platform-runner:1.2.0")
 }
 
 tasks.withType<KotlinCompile> {

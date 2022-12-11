@@ -16,7 +16,7 @@ internal class VisaPaymentMethodTest {
     }
 
     @Test
-    fun testInvalidPriceModifier() {
+    fun `test invalid priceModifier`() {
         assertThrowsExactly(IllegalStateException::class.java) {
             VisaPaymentMethod.Factory.buildPaymentMethod().calculateFinalPrice(100.0, 0.8f)
         }

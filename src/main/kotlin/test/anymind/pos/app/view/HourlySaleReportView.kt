@@ -20,15 +20,18 @@ data class HourlySaleReportView(
                 OffsetDateTime.parse(startDateTime).toLocalDateTime(),
                 OffsetDateTime.parse(endDateTime).toLocalDateTime()
             )
-
             val result = arrayListOf<HourlySaleReportView>()
             val dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneId.of("UTC"))
             report.forEach {
+                println(it.count())
+                it.forEach { key, value ->
+                    println("$key:$value")
+                }
                 result.add(
                     HourlySaleReportView(
-                        dateTime = ZonedDateTime.parse(it.date_time, dateTimeFormatter).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME),
-                        sales = it.sales,
-                        points = it.points
+                        dateTime = ZonedDateTime.parse(it["date"].toString(), dateTimeFormatter).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME),
+                        sales = it["sales"] as Double,
+                        points = it["points"] as Double
                     )
                 )
             }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class PaymentMethodFactoryTest {
     @Test
-    fun createPaymentMethodByName() {
+    fun `test create payment method by name`() {
         PaymentMethodFactory.paymentMethodMapping.forEach { name, paymentMethodObject ->
             println("[!] Checking $name ...")
             val factoryObj = PaymentMethodFactory.buildByName(name)
