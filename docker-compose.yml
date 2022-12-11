@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mysql:
+    image: 'mysql:8'
+    volumes:
+      - data_mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: 'anymind_pos'
+
+volumes:
+  data_mysql: { }
