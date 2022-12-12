@@ -134,7 +134,7 @@ Also, because GraphQl is using `Schema` to validate user input, in most cases, u
 error handling I am using the `check` method in the Kotlin and the message will define in each case.
 Because I am developing web API, I believe we can omit translation. It is a client-side concern in most cases.
 
-## Unit Testing
+### Unit Testing
 I am using JUnit as expected :). Some dependencies are added to support Junit integration with the Spring framework. So for repositories,
 I can use the H2 database for the test purpose. Also, I limit testing to UnitTesting. Integration testing is an advanced topic and requires more detail about the business logic and etc.
 So there is no test for GraphQl API that I believe, it is pointless in this project since we are defining a schema as an interface
@@ -149,6 +149,7 @@ But it is necessary to keep the test synced with the code.
 
 > I have settled up GitHub action to run tests. check https://github.com/aminkt/anymind-kotlin-pos-app/actions/workflows/tests.yml
 
+----
 ## Deploying on the production
 I have prepared 3 ways to run the application on your server:
 
@@ -171,6 +172,7 @@ Check https://github.com/aminkt/anymind-kotlin-pos-app/actions/workflows/gradle.
 Easily clone the repository and run `docker-compose up -d` to run the application on your server.
 The Mysql database is settled up in `docker-compose.yml`.
 
+----
 ## Interview Objectives
 * You have to use Git [✓]
 * Your code has to be clear [✓]
