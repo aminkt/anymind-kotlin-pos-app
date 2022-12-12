@@ -146,17 +146,16 @@ But it is necessary to keep test sync with code.
 and then i wrote the tests.
 
 ## Deploying on production
-I have prepared the `docker-compose.yml` file to simplify deploying on production. to deploy the project, run below steps in your server.
+I have prepared 3 way to run application in your server:
 
-1. Clone the project
-2. run `docker-compose up -d`
+### Run Docker Image from docker hub
+https://hub.docker.com/repository/docker/aminkt/anymind-kotlin-pos-app
 
-Done. But this way is not good for big applications. Better way to deploy the project is:
+### Download .jar file from GitHub repository
 
-1. Config 
+### Docker Compose file
 
-
-### Interview Objective
+## Interview Objective
 * You have to use Git [✓]
 * Your code has to be clear [✓]
 * You know good coding practices and patterns [✓]
