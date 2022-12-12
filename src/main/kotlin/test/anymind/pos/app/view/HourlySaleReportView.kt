@@ -23,10 +23,6 @@ data class HourlySaleReportView(
             val result = arrayListOf<HourlySaleReportView>()
             val dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneId.of("UTC"))
             report.forEach {
-                println(it.count())
-                it.forEach { key, value ->
-                    println("$key:$value")
-                }
                 result.add(
                     HourlySaleReportView(
                         dateTime = ZonedDateTime.parse(it["date"].toString(), dateTimeFormatter).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME),
