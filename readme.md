@@ -145,17 +145,29 @@ But it is necessary to keep test sync with code.
 > I believe best pattern to implement tests is TDD. But because this project is my first spring project with Kotlin, I explored it first
 and then i wrote the tests.
 
+> I have settled up GitHub action to run tests. check https://github.com/aminkt/anymind-kotlin-pos-app/actions/workflows/tests.yml
+
 ## Deploying on production
 I have prepared 3 way to run application in your server:
 
 ### Run Docker Image from docker hub
-https://hub.docker.com/repository/docker/aminkt/anymind-kotlin-pos-app
+There is a GitHub action to build and push docker image after each push on the main branch on the repository.
+You can easily run the application server using docker image. Run bellow command on your server to run application:
+```
+docker run -p 80:8080 --env MYSQL_HOST="localhost:3306" --env MYSQL_DATABASE=anymind_pos aminkt/anymind-kotlin-pos-app:latest
+```
+You can find docker image in https://hub.docker.com/repository/docker/aminkt/anymind-kotlin-pos-app
 
 ### Download .jar file from GitHub repository
+After each push on the main branch of the repository, A GitHub action will run to build the application artifacts.
+Check https://github.com/aminkt/anymind-kotlin-pos-app/actions/workflows/gradle.yml to download related .jar file.
+
 
 ### Docker Compose file
+Easily clone the repository and run `docker-compose up -d` to run the application on your server.
+Mysql database is settled up in `docker-compose.yml`.
 
-## Interview Objective
+## Interview Objectives
 * You have to use Git [✓]
 * Your code has to be clear [✓]
 * You know good coding practices and patterns [✓]
