@@ -74,7 +74,15 @@ For the Web API interface, I have chosen `Graphql` because of its advantages and
 Authorization implementation is skipped due to time limitation, but you can use authorization token and JWT. check the 
 `test.anymind.pos.app.AppGraphqlContextFactory` implementation. You can extract user id and use it in the application.
 
+Application itself is brake down into two section. `app` and `domain`. All business logic should encapsulate in `domain` package.
+This architecture is suggested by Clean Architecture book to separate business logic concerns from technology and framework.
+But you can see I am using spring service annotate and JPA annotates in domain. Because these items do not cause domain logic couple with
+Framework limitation in my opinion it is ok. Because these annotation do not force us to implement any code for framework ord data source.
 
+`app` package is holding application and framework codes. This code should not affect business logic. It means we should be able to change
+framework and related technologies any time we need without problem about the business logic.
+
+Also, if we forced to implement some infrastructure code like repository implementions (that in this project, JPA is helping us) we should put them into `infrastructure` package.
 
 ### Patterns that is used
 * Factory
@@ -138,7 +146,14 @@ But it is necessary to keep test sync with code.
 and then i wrote the tests.
 
 ## Deploying on production
+I have prepared the `docker-compose.yml` file to simplify deploying on production. to deploy the project, run below steps in your server.
 
+1. Clone the project
+2. run `docker-compose up -d`
+
+Done. But this way is not good for big applications. Better way to deploy the project is:
+
+1. Config 
 
 
 ### Interview Objective
