@@ -14,10 +14,9 @@ class SaleQuery(val transactionRepo: ITransactionRepo) : Query {
         return PaymentMethodView.getPaymentMethodByName(name)
     }
 
-    fun hourlySaleReport(input: SaleReportInput, dfe: DataFetchingEnvironment): List<HourlySaleReportView> {
+    suspend fun hourlySaleReport(input: SaleReportInput, dfe: DataFetchingEnvironment): List<HourlySaleReportView> {
         val userId = dfe.graphQlContext.get<Int>("userId")
         checkNotNull("userId") { "You have to login first." }
-
         return HourlySaleReportView.getHourlySaleReport(transactionRepo, userId, input.startDateTime, input.endDateTime)
     }
 }
